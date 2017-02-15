@@ -45,8 +45,10 @@ def addBook(title, isbn, author, year, qty):
     invID += 1
     sqlScript = "insert into inventory(id, type, datepurchased) values({0}, 'Book', '15 Feb 2017')".format(str(invID))
     if cursor.execute(sqlScript):
-        sqlLiteDB.commit()
-    return True
+        sqlScript = "insert into book(title, isbn, author, yearpublished, quantity, inventoryid) values('{0}', '{1}', '{2}', {3}, {4}, {5})".format(title, isbn, author, year, qty, invID)
+        if cursor.execute(sqlScript):
+            sqlLiteDB.commit()
+            return True
 
 if __name__ == '__main__':
     import sys
