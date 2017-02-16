@@ -1,11 +1,14 @@
 from PyQt5 import QtSql, QtGui, QtWidgets
 import sqlite3
 
+def getDB():
+    db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
+    db.setDatabaseName('citylibrary.db')
+    return db
 
 def createDB():
     print('Creating DB')
-    db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-    db.setDatabaseName('citylibrary.db')
+    db = getDB()
     if not db.open():
         QtGui.QMessageBox.critical(None, QtGui.qApp.tr("Cannot open database"),
                                    QtGui.qApp.tr("Unable to establish a database connection.\n"
@@ -50,9 +53,11 @@ def addBook(title, isbn, author, year, qty):
             sqlLiteDB.commit()
             return True
 
+
+
 if __name__ == '__main__':
     import sys
 
-app = QtWidgets.QApplication(sys.argv)
-createDB()
-addBook("MyBook", "1234-5678-1234-6789", "KKK", 2000, 5)
+    app = QtWidgets.QApplication(sys.argv)
+    createDB()
+    addBook("MyBook", "1234-5678-1234-6789", "KKK", 2000, 5)
