@@ -1,15 +1,10 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'Hello.ui'
-#
-# Created by: PyQt5 UI code generator 5.6
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtWidgets
 from MyDialog import Ui_Dialog
+from SQLiteLayer import *
 
+#The base class for all inventory windows
 class Base_Frm(object):
+    #The ItemType string parameter specifies which inventory data is being manipulated
     def setupUi(self, Form, ItemType):
         Form.setObjectName("Form")
         Form.resize(400, 300)
@@ -19,7 +14,8 @@ class Base_Frm(object):
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(140, 160, 75, 23))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.ShowDlg)
+        self.pushButton.clicked.connect(lambda: self.addBook(self.pushButton))
+        #self.pushButton.clicked.connect(self.ShowDlg)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(10, 15, 80, 31))
         self.label.setObjectName("label")
@@ -83,11 +79,15 @@ class Base_Frm(object):
             self.label_5.setVisible(False)
             self.lineEdit_5.setVisible(False)
 
+    #This method invokes the dialog box the appears after the Save button is clicked
     def ShowDlg(self):
         Dialog = QtWidgets.QDialog()
         ui = Ui_Dialog()
         ui.setupUi(Dialog)
         Dialog.exec_()
+
+    def addBook(self, b):
+        DBAddBook(self.lineEdit.text(),self.lineEdit_2.text(),self.lineEdit_3.text(),self.lineEdit_4.text(),self.lineEdit_5.text())
 
 
 if __name__ == "__main__":

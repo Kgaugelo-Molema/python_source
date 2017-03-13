@@ -23,20 +23,17 @@ def createDB():
     return True
 
 def createLibraryDB(query):
-    #Inventory
+    #Create Inventory table
     query.exec_("create table inventory(id int primary key, "
                 "type varchar(10), datepurchased datetime)")
-    # query.exec_("insert into sportsmen values(102, 'Christiano', 'Ronaldo')")
-    # query.exec_("insert into sportsmen values(103, 'Ussain', 'Bolt')")
-    # query.exec_("insert into sportsmen values(104, 'Sachin', 'Tendulkar')")
-    # query.exec_("insert into sportsmen values(105, 'Saina', 'Nehwal')")
 
-    # Book
+    #Create Book table
     query.exec_("create table book(title varchar(100), "
                 "isbn varchar(50), author varchar(100), "
                 "yearpublished int, quantity int, inventoryid int)")
 
-def addBook(title, isbn, author, year, qty):
+#Add book to DB
+def DBAddBook(title, isbn, author, year, qty):
     print('Adding book to DB')
     sqlLiteDB = sqlite3.connect('citylibrary.db')
     cursor = sqlLiteDB.cursor()
@@ -60,4 +57,4 @@ if __name__ == '__main__':
 
     app = QtWidgets.QApplication(sys.argv)
     createDB()
-    addBook("MyBook", "1234-5678-1234-6789", "KKK", 2000, 5)
+

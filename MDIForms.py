@@ -3,7 +3,6 @@ import sys
 from PyQt5.QtWidgets import *
 from BaseFrm import Base_Frm
 
-
 class MainWindow(QMainWindow):
     count = 0
 
@@ -11,9 +10,11 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(parent)
         self.mdi = QMdiArea()
         self.setCentralWidget(self.mdi)
+        #The menu bar object on the main window
         bar = self.menuBar()
         file = bar.addMenu("File")
         new = file.addMenu("New")
+        #Menu bar items
         new.addAction("Book")
         new.addAction("Media")
         new.addAction("Stationery")
@@ -46,6 +47,7 @@ class MainWindow(QMainWindow):
         if (q.text() == "Book") or (q.text() == "Media") or (q.text() == "Stationery") or (q.text() == "Computer"):
             self.showForm(q.text())
 
+    #This method invokes all the inventory item maintenance windows
     def showForm(self, ItemType):
         MainWindow.count = MainWindow.count + 1
         Form = QWidget()
@@ -54,18 +56,8 @@ class MainWindow(QMainWindow):
         self.mdi.addSubWindow(Form)
         Form.show()
 
-    def showSub(self):
-        MainWindow.count = MainWindow.count + 1
-        sub = QMdiSubWindow()
-        sub.setWidget(QTextEdit())
-        sub.setWindowTitle("subwindow" + str(MainWindow.count))
-        self.mdi.addSubWindow(sub)
-        sub.show()
-
-
 def main():
     app = QApplication(sys.argv)
-
     ex = MainWindow()
     ex.show()
     sys.exit(app.exec_())

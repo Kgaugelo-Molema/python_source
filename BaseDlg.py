@@ -11,7 +11,7 @@ class Ui_Form(object):
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(190, 20, 75, 23))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(lambda: self.whichbtn(self.pushButton))
+        #self.pushButton.clicked.connect(lambda: self.whichbtn(self.pushButton))
         #self.pushButton.clicked.connect(self.btnstate)
         self.pushButton.clicked.connect(self.ShowDlg)
         self.label = QtWidgets.QLabel(Form)
