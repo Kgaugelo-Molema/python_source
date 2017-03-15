@@ -1,4 +1,5 @@
 from PyQt5 import QtSql, QtGui, QtWidgets
+from datetime import datetime
 import sqlite3
 
 def getDB():
@@ -6,6 +7,7 @@ def getDB():
     db.setDatabaseName('citylibrary.db')
     return db
 
+#Create the library application database
 def createDB():
     print('Creating DB')
     db = getDB()
@@ -24,13 +26,15 @@ def createDB():
 
 def createLibraryDB(query):
     #Create Inventory table
+    query.exec_("drop table inventory")
     query.exec_("create table inventory(id int primary key, "
                 "type varchar(10), datepurchased datetime)")
 
     #Create Book table
+    query.exec_("drop table book")
     query.exec_("create table book(title varchar(100), "
                 "isbn varchar(50), author varchar(100), "
-                "yearpublished int, quantity int, inventoryid int)")
+                "yearpublished varchar(4), quantity varchar(4), inventoryid int)")
 
 #Add book to DB
 def DBAddBook(title, isbn, author, year, qty):
@@ -39,17 +43,17 @@ def DBAddBook(title, isbn, author, year, qty):
     cursor = sqlLiteDB.cursor()
     cursor.execute('select max(id) from inventory')
     row = cursor.fetchone()
-    invID = row[0]
-    if invID == 0:
-        invID == 1
+    invID = 0;
+    if row[0] != None:
+        invID = row[0]
     invID += 1
-    sqlScript = "insert into inventory(id, type, datepurchased) values({0}, 'Book', '15 Feb 2017')".format(str(invID))
+    datestr = datetime.now().strftime("%d %B %Y")
+    sqlScript = "insert into inventory(id, type, datepurchased) values({0}, 'Book', '{1}')".format(str(invID), datestr)
     if cursor.execute(sqlScript):
-        sqlScript = "insert into book(title, isbn, author, yearpublished, quantity, inventoryid) values('{0}', '{1}', '{2}', {3}, {4}, {5})".format(title, isbn, author, year, qty, invID)
+        sqlScript = "insert into book(title, isbn, author, yearpublished, quantity, inventoryid) values('{0}', '{1}', '{2}', '{3}', '{4}', {5})".format(title, isbn, author, year, qty, str(invID))
         if cursor.execute(sqlScript):
             sqlLiteDB.commit()
             return True
-
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtWidgets
 from MyDialog import Ui_Dialog
-from SQLiteLayer import *
+import QryBook
 
 #The base class for all inventory windows
 class Base_Frm(object):
@@ -86,8 +86,10 @@ class Base_Frm(object):
         ui.setupUi(Dialog)
         Dialog.exec_()
 
+    #This method executes the SQL insert statements for the Inventory and Book tables
     def addBook(self, b):
-        DBAddBook(self.lineEdit.text(),self.lineEdit_2.text(),self.lineEdit_3.text(),self.lineEdit_4.text(),self.lineEdit_5.text())
+        if QryBook.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(), self.lineEdit_5.text()):
+            self.ShowDlg()
 
 
 if __name__ == "__main__":

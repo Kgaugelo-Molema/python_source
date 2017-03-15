@@ -15,12 +15,19 @@ class MainWindow(QMainWindow):
         file = bar.addMenu("File")
         new = file.addMenu("New")
         #Menu bar items
-        new.addAction("Book")
+        #new.addAction("Book")
         new.addAction("Media")
         new.addAction("Stationery")
         new.addAction("Computer")
+        #File|New menu actions
+        # actionBook = QAction(new)
+        # actionBook.setObjectName("actionBook")
+        # actionBook.setText("Book")
+        # actionBook.setToolTip("ToolTip")
+        # actionBook.setStatusTip("StatusTip")
+        # new.addAction(actionBook)
+
         update = file.addMenu("Update")
-        update.addAction("Book")
         update.addAction("Media")
         update.addAction("Stationery")
         update.addAction("Computer")
@@ -47,8 +54,9 @@ class MainWindow(QMainWindow):
         if (q.text() == "Book") or (q.text() == "Media") or (q.text() == "Stationery") or (q.text() == "Computer"):
             self.showForm(q.text())
 
+
     #This method invokes all the inventory item maintenance windows
-    def showForm(self, ItemType):
+    def showForm(self, ItemType, ExecType):
         MainWindow.count = MainWindow.count + 1
         Form = QWidget()
         ui = Base_Frm()

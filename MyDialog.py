@@ -22,7 +22,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Confirmation"))
-        self.label.setText(_translate("Dialog", "Computer saved successfully"))
+        self.label.setText(_translate("Dialog", "Inventory saved successfully"))
 
 
 if __name__ == "__main__":
