@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a20cf1-eab4-45ef-8ccb-62b72ea4c1ea" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/QryBase.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/citylibrary.db" afterPath="$PROJECT_DIR$/citylibrary.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseFrm.py" afterPath="$PROJECT_DIR$/BaseFrm.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/QryComputer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QryBook.py" afterPath="$PROJECT_DIR$/QryBook.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLiteLayer.py" afterPath="$PROJECT_DIR$/SQLiteLayer.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,7 +31,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QryBase.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QryBase.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/QryBase.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
@@ -70,8 +68,8 @@
       <file leaf-file-name="SQLiteLayer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLiteLayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+            <state relative-caret-position="204">
+              <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="25" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -79,14 +77,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QryBook.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QryComputer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/QryComputer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QryBook.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/QryBook.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,11 +163,12 @@
         <option value="$PROJECT_DIR$/BookView.py" />
         <option value="$PROJECT_DIR$/BaseDlg.py" />
         <option value="$PROJECT_DIR$/MyDialog.py" />
-        <option value="$PROJECT_DIR$/SQLiteLayer.py" />
         <option value="$PROJECT_DIR$/../Ass01/PyForms/CommLib.py" />
         <option value="$PROJECT_DIR$/MDIForms.py" />
         <option value="$PROJECT_DIR$/BaseFrm.py" />
         <option value="$PROJECT_DIR$/QryBase.py" />
+        <option value="$PROJECT_DIR$/SQLiteLayer.py" />
+        <option value="$PROJECT_DIR$/QryComputer.py" />
         <option value="$PROJECT_DIR$/QryBook.py" />
       </list>
     </option>
@@ -517,7 +524,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/QryBook.py</url>
-          <line>25</line>
+          <line>23</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -527,7 +534,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/QryBook.py</url>
-          <line>13</line>
+          <line>12</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
@@ -543,13 +550,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CommLib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CommLib.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -883,16 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLiteLayer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MDIForms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -913,16 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QryBook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/QryBase.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -930,6 +910,32 @@
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLiteLayer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QryComputer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QryBook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
