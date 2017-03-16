@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtWidgets
 from MyDialog import Ui_Dialog
-import QryBook
+from QryBook import *
 
 #The base class for all inventory windows
 class Base_Frm(object):
@@ -93,7 +93,7 @@ class Base_Frm(object):
         result = False
         if self.execType == "Add":
             if self.itemType == "Book":
-                if QryBook.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(), self.lineEdit_5.text()):
+                if self.execBookOperations():
                     result = True
         if result:
             self.ShowDlg()
@@ -101,7 +101,8 @@ class Base_Frm(object):
     def execBookOperations(self):
         result = False
         if self.execType == "Add":
-            if QryBook.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(),self.lineEdit_5.text()):
+            qry = QrBookData()
+            if qry.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(),self.lineEdit_5.text()):
                 result = True
         return result
 
