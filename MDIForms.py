@@ -20,12 +20,12 @@ class MainWindow(QMainWindow):
         new.addAction("Stationery")
         new.addAction("Computer")
         #File|New menu actions
-        # actionBook = QAction(new)
-        # actionBook.setObjectName("actionBook")
-        # actionBook.setText("Book")
-        # actionBook.setToolTip("ToolTip")
-        # actionBook.setStatusTip("StatusTip")
-        # new.addAction(actionBook)
+        actionBook = QAction(new)
+        actionBook.setObjectName("actionBook")
+        actionBook.setText("Book")
+        actionBook.setToolTip("ToolTip")
+        actionBook.setStatusTip("StatusTip")
+        new.addAction(actionBook)
 
         update = file.addMenu("Update")
         update.addAction("Media")
@@ -56,7 +56,7 @@ class MainWindow(QMainWindow):
 
 
     #This method invokes all the inventory item maintenance windows
-    def showForm(self, ItemType, ExecType):
+    def showForm(self, ItemType):
         MainWindow.count = MainWindow.count + 1
         Form = QWidget()
         ui = Base_Frm()
