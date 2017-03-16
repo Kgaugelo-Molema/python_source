@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtWidgets
 from MyDialog import Ui_Dialog
 from QryBook import *
+from QryComputer import *
 
 #The base class for all inventory windows
 class Base_Frm(object):
@@ -17,7 +18,6 @@ class Base_Frm(object):
         self.pushButton.setGeometry(QtCore.QRect(140, 160, 75, 23))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(lambda: self.execFormOperations(self.pushButton))
-        #self.pushButton.clicked.connect(self.ShowDlg)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(10, 15, 80, 31))
         self.label.setObjectName("label")
@@ -91,10 +91,12 @@ class Base_Frm(object):
     #This method executes the SQL insert statements for the Inventory and Book tables
     def execFormOperations(self, b):
         result = False
-        if self.execType == "Add":
-            if self.itemType == "Book":
-                if self.execBookOperations():
-                    result = True
+        if self.itemType == "Book":
+            if self.execBookOperations():
+                result = True
+        if self.itemType == "Computer":
+            if self.execComputerOperations():
+                result = True
         if result:
             self.ShowDlg()
 
@@ -104,8 +106,25 @@ class Base_Frm(object):
             qry = QrBookData()
             if qry.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(),self.lineEdit_5.text()):
                 result = True
+        if self.execType == "Edit":
+            qry = QrBookData()
+            invID = 0
+            if qry.Update(invID, self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(),self.lineEdit_5.text()):
+                result = True
+        if self.execType == "Delete":
+            qry = QrBookData()
+            invID = 0
+            if qry.Delete(invID):
+                result = True
         return result
 
+    def execComputerOperations(self):
+        result = False
+        if self.execType == "Add":
+            qry = QrComputer()
+            if qry.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(),self.lineEdit_5.text()):
+                result = True
+        return result
 
 if __name__ == "__main__":
     import sys

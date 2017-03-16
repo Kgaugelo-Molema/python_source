@@ -13,23 +13,61 @@ class MainWindow(QMainWindow):
         #The menu bar object on the main window
         bar = self.menuBar()
         file = bar.addMenu("File")
+        ##########Menu bar items##########
         new = file.addMenu("New")
-        #Menu bar items
-        #new.addAction("Book")
-        new.addAction("Media")
-        new.addAction("Stationery")
-        new.addAction("Computer")
-        #File|New menu actions
+        #----File|New menu actions----#
+        #Book#
         actionBook = QAction(self)
         actionBook.setObjectName("actionBook")
         actionBook.setText("Book")
         actionBook.setToolTip("Add")
         new.addAction(actionBook)
-
+        #Media##
+        actionMedia = QAction(self)
+        actionMedia.setObjectName("actionMedia")
+        actionMedia.setText("Media")
+        actionMedia.setToolTip("Add")
+        new.addAction(actionMedia)
+        #Stationery#
+        actionStationery = QAction(self)
+        actionStationery.setObjectName("actionStationery")
+        actionStationery.setText("Stationery")
+        actionStationery.setToolTip("Add")
+        new.addAction(actionStationery)
+        #Computer#
+        actionComputer = QAction(self)
+        actionComputer.setObjectName("actionComputer")
+        actionComputer.setText("Computer")
+        actionComputer.setToolTip("Add")
+        new.addAction(actionComputer)
+        #--------------------------------------#
         update = file.addMenu("Update")
-        update.addAction("Media")
-        update.addAction("Stationery")
-        update.addAction("Computer")
+        #----File|Update menu actions----#
+        #Book#
+        actionBookEdit = QAction(self)
+        actionBookEdit.setObjectName("actionBookEdit")
+        actionBookEdit.setText("BookEdit")
+        actionBookEdit.setToolTip("Edit")
+        update.addAction(actionBookEdit)
+        #Media##
+        actionMediaEdit = QAction(self)
+        actionMediaEdit.setObjectName("actionMediaEdit")
+        actionMediaEdit.setText("MediaEdit")
+        actionMediaEdit.setToolTip("Edit")
+        update.addAction(actionMediaEdit)
+        #Stationery#
+        actionStationeryEdit = QAction(self)
+        actionStationeryEdit.setObjectName("actionStationeryEdit")
+        actionStationeryEdit.setText("StationeryEdit")
+        actionStationeryEdit.setToolTip("Edit")
+        update.addAction(actionStationeryEdit)
+        #Computer#
+        actionComputerEdit = QAction(self)
+        actionComputerEdit.setObjectName("actionComputerEdit")
+        actionComputerEdit.setText("ComputerEdit")
+        actionComputerEdit.setToolTip("Edit")
+        update.addAction(actionComputerEdit)
+        #--------------------------------------#
         delete = file.addMenu("Delete")
         delete.addAction("Book")
         delete.addAction("Media")
