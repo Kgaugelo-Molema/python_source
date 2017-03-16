@@ -5,16 +5,18 @@ import QryBook
 #The base class for all inventory windows
 class Base_Frm(object):
     #The ItemType string parameter specifies which inventory data is being manipulated
-    def setupUi(self, Form, ItemType):
+    def setupUi(self, Form, ItemType, ExecType):
         Form.setObjectName("Form")
         Form.resize(400, 300)
+        self.itemType = ItemType
+        self.execType = ExecType
         self.lineEdit = QtWidgets.QLineEdit(Form)
         self.lineEdit.setGeometry(QtCore.QRect(110, 20, 200, 20))
         self.lineEdit.setObjectName("lineEdit")
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(140, 160, 75, 23))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(lambda: self.addBook(self.pushButton))
+        self.pushButton.clicked.connect(lambda: self.execFormOperations(self.pushButton))
         #self.pushButton.clicked.connect(self.ShowDlg)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(10, 15, 80, 31))
@@ -44,38 +46,38 @@ class Base_Frm(object):
         self.label_5.setGeometry(QtCore.QRect(10, 126, 80, 31))
         self.label_5.setObjectName("label_5")
 
-        self.retranslateUi(Form, ItemType)
+        self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Form, ItemType):
+    def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", ItemType + " Details"))
+        Form.setWindowTitle(_translate("Form", self.itemType + " Details"))
         self.pushButton.setText(_translate("Form", "Save"))
-        self.label.setText(_translate("Form", ItemType + " Title"))
-        if (ItemType != "Book"):
+        self.label.setText(_translate("Form", self.itemType + " Title"))
+        if (self.itemType != "Book"):
             self.label.setVisible(False)
             self.lineEdit.setVisible(False)
         self.label_2.setText(_translate("Form", "ISBN"))
-        if (ItemType == "Media") or (ItemType == "Stationery"):
+        if (self.itemType == "Media") or (self.itemType == "Stationery"):
             self.label_2.setText(_translate("Form", "Type"))
-        if (ItemType == "Computer"):
+        if (self.itemType == "Computer"):
             self.label_2.setText(_translate("Form", "Manufacturer"))
         self.label_3.setText(_translate("Form", "Author"))
-        if (ItemType == "Media"):
+        if (self.itemType == "Media"):
             self.label_3.setText(_translate("Form", "Size(MB)"))
-        if (ItemType == "Stationery"):
+        if (self.itemType == "Stationery"):
             self.label_3.setText(_translate("Form", "Supplier"))
-        if (ItemType == "Computer"):
+        if (self.itemType == "Computer"):
             self.label_3.setVisible(False)
             self.lineEdit_3.setVisible(False)
         self.label_4.setText(_translate("Form", "Year Published"))
-        if (ItemType == "Media"):
+        if (self.itemType == "Media"):
             self.label_4.setText(_translate("Form", "Source"))
-        if (ItemType != "Book") and (ItemType != "Media"):
+        if (self.itemType != "Book") and (self.itemType != "Media"):
             self.label_4.setVisible(False)
             self.lineEdit_4.setVisible(False)
         self.label_5.setText(_translate("Form", "Quantity"))
-        if (ItemType == "Media"):
+        if (self.itemType == "Media"):
             self.label_5.setVisible(False)
             self.lineEdit_5.setVisible(False)
 
@@ -87,9 +89,21 @@ class Base_Frm(object):
         Dialog.exec_()
 
     #This method executes the SQL insert statements for the Inventory and Book tables
-    def addBook(self, b):
-        if QryBook.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(), self.lineEdit_5.text()):
+    def execFormOperations(self, b):
+        result = False
+        if self.execType == "Add":
+            if self.itemType == "Book":
+                if QryBook.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(), self.lineEdit_5.text()):
+                    result = True
+        if result:
             self.ShowDlg()
+
+    def execBookOperations(self):
+        result = False
+        if self.execType == "Add":
+            if QryBook.Add(self.lineEdit.text(), self.lineEdit_2.text(), self.lineEdit_3.text(), self.lineEdit_4.text(),self.lineEdit_5.text()):
+                result = True
+        return result
 
 
 if __name__ == "__main__":

@@ -20,11 +20,10 @@ class MainWindow(QMainWindow):
         new.addAction("Stationery")
         new.addAction("Computer")
         #File|New menu actions
-        actionBook = QAction(new)
+        actionBook = QAction(self)
         actionBook.setObjectName("actionBook")
         actionBook.setText("Book")
-        actionBook.setToolTip("ToolTip")
-        actionBook.setStatusTip("StatusTip")
+        actionBook.setToolTip("Add")
         new.addAction(actionBook)
 
         update = file.addMenu("Update")
@@ -52,15 +51,15 @@ class MainWindow(QMainWindow):
         if q.text() == "Tiled":
             self.mdi.tileSubWindows()
         if (q.text() == "Book") or (q.text() == "Media") or (q.text() == "Stationery") or (q.text() == "Computer"):
-            self.showForm(q.text())
+            self.showForm(q.text(), QAction(q).parent().toolTip())
 
 
     #This method invokes all the inventory item maintenance windows
-    def showForm(self, ItemType):
+    def showForm(self, ItemType, ExecType):
         MainWindow.count = MainWindow.count + 1
         Form = QWidget()
         ui = Base_Frm()
-        ui.setupUi(Form, ItemType)
+        ui.setupUi(Form, ItemType, ExecType)
         self.mdi.addSubWindow(Form)
         Form.show()
 
